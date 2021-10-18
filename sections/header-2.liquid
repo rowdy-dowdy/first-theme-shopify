@@ -1,0 +1,12 @@
+{%- assign array_string = "A,B,C,4,5,6,7,8" -%}
+{%- assign array = array_string | split : "," -%}
+
+<ul class="flex flex-col">
+  {%- for name in array -%}
+    <li class="">{{ name | plus: 0 }}</li>
+  {%- endfor -%}
+</ul>
+
+{%- assign collection = collections['featured-colection'] -%}
+{{ collection }}
+
