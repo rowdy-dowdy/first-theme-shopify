@@ -23,6 +23,8 @@
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
@@ -35,15 +37,20 @@
     {{ 'application.css' | asset_url | stylesheet_tag }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
   </head>
 
   <body class="">
-    {% comment %} {% section 'announcement-bar' %} {% endcomment %}
-    {% section 'header-2' %}
-    {% comment %} <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    {% section 'announcement' %}
+    {% section 'header' %}
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
-    {% section 'footer' %} {% endcomment %}
+    {% section 'footer' %}
   </body>
 </html>

@@ -6,24 +6,20 @@
         "desktop_text_box_position": "flex-end"
       },
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand"
-          }
+        "Slide1": {
+          "type": "slide"
         },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_label_2": ""
-          }
+        "Slide2": {
+          "type": "slide"
+        },
+        "Slide3": {
+          "type": "slide"
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "Slide1",
+        "Slide2",
+        "Slide3"
       ]
     },
     "rich_text": {
