@@ -31,7 +31,7 @@ box-icon {
 }
 
 .img-loading {
-  background: linear-gradient(-45deg, #b5b5b5, #f9f9f9, #f9f9f9, #b5b5b5);
+  background: linear-gradient(to right, #fafafa 8%, #f4f4f4 38%, #fafafa 54%);
 	background-size: 400% 400%;
 	animation: gradient 5s ease infinite;
 }
@@ -53,19 +53,21 @@ box-icon {
   position: sticky;
   top: 0;
   z-index: 10;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .shopify-section-header-sticky .hiden-when-scroll {
   display: none;
 }
 
-#shopify-section-header-2.animate {
-  transition: transform .3s ease;
+#shopify-section-header.animate {
+  transition: all .3s ease;
 }
 
 .shopify-section-header-hidden {
   transform: translateY(-100%);
+  box-shadow: none;
 }
 
 .shadow-dropmenu {

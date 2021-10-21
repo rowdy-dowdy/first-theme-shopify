@@ -1,0 +1,41 @@
+<style>
+
+</style>
+
+<div class="w-full max-w-[1200px] mx-auto px-4 mt-[30px]">
+  <div class="flex -mx-3.75">
+    <div class="w-1/2 px-3.75">
+      <div class="relative pb-[110.52631578947368%]">
+        <div class="absolute w-full h-full top-0 left-0 bg-blue-500"></div>
+      </div>
+    </div>
+    <div class="w-1/2 px-3.75">
+      <div class="relative pb-[110.52631578947368%]">
+        <div class="absolute w-full h-full top-0 left-0 bg-blue-500"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "List collection",
+    "max_blocks": 4,
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Danh muc sản phẩm",
+            "info": "Lựa chọn danh mục sản phẩm"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

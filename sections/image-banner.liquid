@@ -12,11 +12,23 @@
     transform: scale(1);
   }
 
-  .swiper-slide .caption-ani {
+  .swiper-slide .caption-left {
     transform: translateX(-2rem);
     opacity: 0;
   }
-  .swiper-slide.swiper-slide-active .caption-ani {
+
+  .swiper-slide .caption-right {
+    transform: translateX(2rem);
+    opacity: 0;
+    text-align: right;
+    margin-left: auto;
+  }
+  .swiper-slide .caption-right button {
+    margin-left: auto;
+  }
+
+  .swiper-slide.swiper-slide-active .caption-left,
+  .swiper-slide.swiper-slide-active .caption-right {
     transform: translateX(0);
     opacity: 1;
   }
@@ -28,7 +40,7 @@
     <!-- Slides -->
     {% for block in section.blocks %}
       <div class="swiper-slide relative">
-        <div class="absolute w-full h-full top-0 left-0 bg-indigo-50">
+        <div class="absolute w-full h-full top-0 left-0 bg-indigo-50 overflow-hidden">
           {%- if block.settings.slide_image != blank -%}
             <img
               srcset="{%- if block.settings.slide_image.width >= 375 -%}{{ block.settings.slide_image | img_url: '375x' }} 375w,{%- endif -%}
@@ -45,21 +57,21 @@
               alt="{{ block.settings.slide_image.alt | escape }}"
               width="{{ block.settings.slide_image.width }}"
               height="{{ block.settings.slide_image.width | divided_by: block.settings.slide_image.aspect_ratio }}"
-              class="img-ani w-full h-full object-cover transition-all duration-800 ease-in-out"
+              class="img-ani w-full h-full object-cover transition-all duration-700 ease-in-out"
             >
           {%- endif -%}
         </div>
 
         <div class="relative flex items-center w-full h-full max-w-[1200px] mx-auto px-4">
-          <div class="py-3 caption-ani transition-all duration-1000 ease-in-out">
+          <div class="py-3 {% if block.settings.caption_left == true %} caption-left {% else %} caption-right {% endif %} transition-all duration-1000 delay-300 ease-in-out">
             {%- if block.settings.title != blank -%}
-              <h4 class="uppercase text-lg font-medium tracking-wide">{{ block.settings.title }}</h4>
+              <h4 class="uppercase text-sm md:text-base lg:text-lg font-medium tracking-wide">{{ block.settings.title }}</h4>
             {%- endif -%}
             {%- if block.settings.text != blank -%}
-              <h3 class="uppercase text-[55px] leading-none font-bold tracking-wide">{{ block.settings.text }}</h3>
+              <h3 class="text-3xl md:text-4xl lg:text-[55px] leading-none font-bold tracking-wide py-2">{{ block.settings.text }}</h3>
             {%- endif -%}
 
-            <{%- if block.settings.url == blank -%} button {%- else -%} a href="{{- block.settings.url | url_escape -}}"{% endif %} class="block mt-3 px-8 py-2 bg-gray-800 text-white font-semibold">
+            <{%- if block.settings.url == blank -%} button {%- else -%} a href="{{- block.settings.url | url_escape -}}"{% endif %} class="block lg:mt-3 px-8 py-2 bg-gray-800 text-white font-semibold">
               {%- if block.settings.button -%}
                 {{- block.settings.button -}}
               {%- endif -%}

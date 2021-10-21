@@ -40,6 +40,14 @@ module.exports = {
 				'inherit': 'inherit',
 				'initial': 'initial'	
 			},
+			padding: {
+				'3.75': '15px',
+				'-3.75': '-15px'
+			},
+			margin: {
+				'3.75': '15px',
+				'-3.75': '-15px'
+			}
 		},
 		colors: {
 			transparent: 'transparent',
