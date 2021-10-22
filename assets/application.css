@@ -717,6 +717,10 @@ video {
   bottom: 1rem;
 }
 
+.bottom-6 {
+  bottom: 1.5rem;
+}
+
 .z-\[1\] {
   z-index: 1;
 }
@@ -726,12 +730,30 @@ video {
   margin-right: auto;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.mx-\[-5px\] {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.mt-\[30px\] {
+  margin-top: 30px;
+}
+
 .mr-1 {
   margin-right: 0.25rem;
 }
 
 .ml-4 {
   margin-left: 1rem;
+}
+
+.mb-\[10px\] {
+  margin-bottom: 10px;
 }
 
 .block {
@@ -794,6 +816,14 @@ video {
   width: 25%;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-\[1234px\] {
+  width: 1234px;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -804,6 +834,10 @@ video {
 
 .max-w-\[1200px\] {
   max-width: 1200px;
+}
+
+.max-w-\[90\%\] {
+  max-width: 90%;
 }
 
 .flex-none {
@@ -838,6 +872,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-center {
@@ -901,6 +939,16 @@ video {
   background-color: rgba(238, 242, 255, var(--tw-bg-opacity));
 }
 
+.bg-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(39, 39, 42, var(--tw-bg-opacity));
+}
+
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(228, 228, 231, var(--tw-bg-opacity));
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -949,6 +997,21 @@ video {
   padding-right: 0.5rem;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.px-\[5px\] {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
 .pl-4 {
   padding-left: 1rem;
 }
@@ -965,6 +1028,22 @@ video {
   padding-right: 1rem;
 }
 
+.pb-\[110\%\] {
+  padding-bottom: 110%;
+}
+
+.pb-\[calc\(55\%-5px\)\] {
+  padding-bottom: calc(55% - 5px);
+}
+
+.pb-\[calc\(110\.25\%\)\] {
+  padding-bottom: calc(110.25%);
+}
+
+.pb-\[calc\(220\%\+11px\)\] {
+  padding-bottom: calc(220% + 11px);
+}
+
 .text-center {
   text-align: center;
 }
@@ -979,6 +1058,11 @@ video {
   line-height: 1.75rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -987,11 +1071,6 @@ video {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .font-semibold {
@@ -1016,6 +1095,14 @@ video {
 
 .italic {
   font-style: italic;
+}
+
+.leading-none {
+  line-height: 1;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
 }
 
 .text-white {
@@ -1062,8 +1149,20 @@ video {
   transition-duration: 150ms;
 }
 
+.delay-300 {
+  transition-delay: 300ms;
+}
+
 .duration-150 {
   transition-duration: 150ms;
+}
+
+.duration-700 {
+  transition-duration: 700ms;
+}
+
+.duration-1000 {
+  transition-duration: 1000ms;
 }
 
 .ease-in-out {
@@ -1089,11 +1188,21 @@ video {
   transform: var(--tw-transform);
 }
 
+.group:hover .group-hover\:scale-110 {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: var(--tw-transform);
+}
+
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
 }
 
 @media (min-width: 768px) {
+  .md\:mb-0 {
+    margin-bottom: 0px;
+  }
+
   .md\:flex {
     display: flex;
   }
@@ -1102,13 +1211,49 @@ video {
     height: 500px;
   }
 
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
+  .md\:w-1\/4 {
+    width: 25%;
+  }
+
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
+  .lg\:-mx-3\.75 {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  .lg\:-mx-3 {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
+
+  .lg\:mt-3 {
+    margin-top: 0.75rem;
+  }
+
+  .lg\:mb-\[30px\] {
+    margin-bottom: 30px;
+  }
+
   .lg\:flex {
     display: flex;
   }
@@ -1147,8 +1292,39 @@ video {
     margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
+  .lg\:px-3\.75 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .lg\:px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .lg\:pb-\[calc\(55\%-15px\)\] {
+    padding-bottom: calc(55% - 15px);
+  }
+
+  .lg\:pb-\[calc\(110\.5\%\)\] {
+    padding-bottom: calc(110.5%);
+  }
+
+  .lg\:pb-\[calc\(220\%\+33px\)\] {
+    padding-bottom: calc(220% + 33px);
+  }
+
   .lg\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .lg\:text-\[55px\] {
+    font-size: 55px;
   }
 }

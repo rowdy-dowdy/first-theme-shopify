@@ -54,7 +54,7 @@
     </span>
   </div>
 
-  <div class="flex-none justify-center lg:justify-start lg:flex-none py-4">
+  <a href="/" class="flex-none justify-center lg:justify-start lg:flex-none py-4">
     {%- if section.settings.logo != blank -%}
       <img src="{{ section.settings.logo | img_url: '200x200' }}" width="{{ section.settings.widthLogo }}" height="50" class="h-auto mx-auto" />
     {%- else -%}
@@ -62,7 +62,7 @@
         {{- page_title -}}
       </div>
     {%- endif -%}
-  </div>
+  </a>
 
   <ul class="hidden lg:flex bg-white">
     {%- for link in section.settings.menu.links -%}

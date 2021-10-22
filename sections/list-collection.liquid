@@ -1,0 +1,244 @@
+<style>
+
+</style>
+
+nguyễn việt hùng
+
+{%- assign countBlock = section.blocks | size -%}
+{%- if countBlock >= 1 -%}
+<div class="w-full max-w-[1200px] mx-auto px-4 mt-[30px]">
+  <div class="flex flex-wrap mx-[-5px] lg:-mx-3.75">
+    <div class="{% if countBlock == 4 %} w-full md:w-1/2 mb-[10px] md:mb-0 {% else %} w-1/2 {% endif %} px-[5px] lg:px-3.75">
+      <div class="relative pb-[110%] bg-gray-200">
+        {%- if section.blocks[0].settings.collection != blank -%}
+          <a href="{{ section.blocks[0].settings.collection.url }}" class="absolute w-full h-full top-0 left-0 group overflow-hidden">
+            <img
+              srcset="{%- if section.blocks[0].settings.collection.products.first.images[0].width >= 375 -%}{{ section.blocks[0].settings.collection.products.first.images[0] | img_url: '375x' }} 375w,{%- endif -%}
+                {%- if section.blocks[0].settings.collection.products.first.images[0].width >= 750 -%}{{ section.blocks[0].settings.collection.products.first.images[0] | img_url: '750x' }} 750w,{%- endif -%}
+                {%- if section.blocks[0].settings.collection.products.first.images[0].width >= 1100 -%}{{ section.blocks[0].settings.collection.products.first.images[0] | img_url: '1100x' }} 1100w,{%- endif -%}
+                {%- if section.blocks[0].settings.collection.products.first.images[0].width >= 1500 -%}{{ section.blocks[0].settings.collection.products.first.images[0] | img_url: '1500x' }} 1500w,{%- endif -%}
+                {%- if section.blocks[0].settings.collection.products.first.images[0].width >= 1780 -%}{{ section.blocks[0].settings.collection.products.first.images[0] | img_url: '1780x' }} 1780w,{%- endif -%}
+                {%- if section.blocks[0].settings.collection.products.first.images[0].width >= 2000 -%}{{ section.blocks[0].settings.collection.products.first.images[0] | img_url: '2000x' }} 2000w,{%- endif -%}
+                {%- if section.blocks[0].settings.collection.products.first.images[0].width >= 3000 -%}{{ section.blocks[0].settings.collection.products.first.images[0] | img_url: '3000x' }} 3000w,{%- endif -%}
+                {%- if section.blocks[0].settings.collection.products.first.images[0].width >= 3840 -%}{{ section.blocks[0].settings.collection.products.first.images[0] | img_url: '3840x' }} 3840w,{%- endif -%}
+                {{ section.blocks[0].settings.collection.products.first.images[0] | img_url: 'master' }} {{ section.blocks[0].settings.collection.products.first.images[0].width }}w"
+              src="{{ section.blocks[0].settings.collection.products.first.images[0] | img_url: '1500x' }}"
+              loading="lazy"
+              alt="{{ section.blocks[0].settings.collection.products.first.images[0].alt | escape }}"
+              width="{{ section.blocks[0].settings.collection.products.first.images[0].width }}"
+              height="{{ section.blocks[0].settings.collection.products.first.images[0].width | divided_by: section.blocks[0].settings.collection.products.first.images[0].aspect_ratio }}"
+              class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
+            >
+
+            <p class="absolute bottom-6 left-1/2 -translate-x-1/2 px-12 py-2 border bg-white font-medium flex justify-center w-max max-w-[90%]">
+              {{ section.blocks[0].settings.collection.title }}
+            </p>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if countBlock < 4 and countBlock > 1 -%}
+      <div class="w-1/2 px-[5px] lg:px-3.75">
+        {%- if countBlock == 2 -%}
+          <div class="relative pb-[110%] bg-gray-200">
+            {%- if section.blocks[1].settings.collection != blank -%}
+              <a href="{{ section.blocks[1].settings.collection.url }}" class="absolute w-full h-full top-0 left-0 group overflow-hidden">
+                <img
+                  srcset="{%- if section.blocks[1].settings.collection.products.first.images[0].width >= 375 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '375x' }} 375w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 750 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '750x' }} 750w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 1100 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1100x' }} 1100w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 1500 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1500x' }} 1500w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 1780 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1780x' }} 1780w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 2000 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '2000x' }} 2000w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 3000 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '3000x' }} 3000w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 3840 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '3840x' }} 3840w,{%- endif -%}
+                    {{ section.blocks[1].settings.collection.products.first.images[0] | img_url: 'master' }} {{ section.blocks[1].settings.collection.products.first.images[0].width }}w"
+                  src="{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1500x' }}"
+                  loading="lazy"
+                  alt="{{ section.blocks[1].settings.collection.products.first.images[0].alt | escape }}"
+                  width="{{ section.blocks[1].settings.collection.products.first.images[0].width }}"
+                  height="{{ section.blocks[1].settings.collection.products.first.images[0].width | divided_by: section.blocks[1].settings.collection.products.first.images[0].aspect_ratio }}"
+                  class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
+                >
+
+                <p class="absolute bottom-6 left-1/2 -translate-x-1/2 px-12 py-2 border bg-white font-medium flex justify-center w-max max-w-[90%]">
+                  {{ section.blocks[1].settings.collection.title }}
+                </p>
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if countBlock == 3 -%}
+          <div class="relative pb-[calc(55%-5px)] lg:pb-[calc(55%-15px)] mb-[10px] lg:mb-[30px] bg-gray-200">
+            {%- if section.blocks[1].settings.collection != blank -%}
+              <a href="{{ section.blocks[1].settings.collection.url }}" class="absolute w-full h-full top-0 left-0 group overflow-hidden">
+                <img
+                  srcset="{%- if section.blocks[1].settings.collection.products.first.images[0].width >= 375 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '375x' }} 375w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 750 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '750x' }} 750w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 1100 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1100x' }} 1100w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 1500 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1500x' }} 1500w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 1780 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1780x' }} 1780w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 2000 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '2000x' }} 2000w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 3000 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '3000x' }} 3000w,{%- endif -%}
+                    {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 3840 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '3840x' }} 3840w,{%- endif -%}
+                    {{ section.blocks[1].settings.collection.products.first.images[0] | img_url: 'master' }} {{ section.blocks[1].settings.collection.products.first.images[0].width }}w"
+                  src="{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1500x' }}"
+                  loading="lazy"
+                  alt="{{ section.blocks[1].settings.collection.products.first.images[0].alt | escape }}"
+                  width="{{ section.blocks[1].settings.collection.products.first.images[0].width }}"
+                  height="{{ section.blocks[1].settings.collection.products.first.images[0].width | divided_by: section.blocks[1].settings.collection.products.first.images[0].aspect_ratio }}"
+                  class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
+                >
+
+                <p class="absolute bottom-6 left-1/2 -translate-x-1/2 px-12 py-2 border bg-white font-medium flex justify-center w-max max-w-[90%]">
+                  {{ section.blocks[1].settings.collection.title }}
+                </p>
+              </a>
+            {%- endif -%}
+          </div>
+          <div class="relative pb-[calc(55%-5px)] lg:pb-[calc(55%-15px)] bg-gray-200">
+            {%- if section.blocks[2].settings.collection != blank -%}
+              <a href="{{ section.blocks[2].settings.collection.url }}" class="absolute w-full h-full top-0 left-0 group overflow-hidden">
+                <img
+                  srcset="{%- if section.blocks[2].settings.collection.products.first.images[0].width >= 375 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '375x' }} 375w,{%- endif -%}
+                    {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 750 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '750x' }} 750w,{%- endif -%}
+                    {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 1100 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '1100x' }} 1100w,{%- endif -%}
+                    {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 1500 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '1500x' }} 1500w,{%- endif -%}
+                    {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 1780 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '1780x' }} 1780w,{%- endif -%}
+                    {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 2000 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '2000x' }} 2000w,{%- endif -%}
+                    {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 3000 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '3000x' }} 3000w,{%- endif -%}
+                    {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 3840 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '3840x' }} 3840w,{%- endif -%}
+                    {{ section.blocks[2].settings.collection.products.first.images[0] | img_url: 'master' }} {{ section.blocks[2].settings.collection.products.first.images[0].width }}w"
+                  src="{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '1500x' }}"
+                  loading="lazy"
+                  alt="{{ section.blocks[2].settings.collection.products.first.images[0].alt | escape }}"
+                  width="{{ section.blocks[2].settings.collection.products.first.images[0].width }}"
+                  height="{{ section.blocks[2].settings.collection.products.first.images[0].width | divided_by: section.blocks[2].settings.collection.products.first.images[0].aspect_ratio }}"
+                  class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
+                >
+
+                <p class="absolute bottom-6 left-1/2 -translate-x-1/2 px-12 py-2 border bg-white font-medium flex justify-center w-max max-w-[90%]">
+                  {{ section.blocks[2].settings.collection.title }}
+                </p>
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if countBlock == 4 -%}
+      <div class="w-1/2 md:w-1/4 px-[5px] lg:px-3.75 mb-[10px]">
+        <div class="relative pb-[calc(110.25%)] lg:pb-[calc(110.5%)] mb-[10px] lg:mb-[30px] bg-gray-200">
+          {%- if section.blocks[1].settings.collection != blank -%}
+            <a href="{{ section.blocks[1].settings.collection.url }}" class="absolute w-full h-full top-0 left-0 group overflow-hidden">
+              <img
+                srcset="{%- if section.blocks[1].settings.collection.products.first.images[0].width >= 375 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '375x' }} 375w,{%- endif -%}
+                  {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 750 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '750x' }} 750w,{%- endif -%}
+                  {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 1100 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1100x' }} 1100w,{%- endif -%}
+                  {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 1500 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1500x' }} 1500w,{%- endif -%}
+                  {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 1780 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1780x' }} 1780w,{%- endif -%}
+                  {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 2000 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '2000x' }} 2000w,{%- endif -%}
+                  {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 3000 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '3000x' }} 3000w,{%- endif -%}
+                  {%- if section.blocks[1].settings.collection.products.first.images[0].width >= 3840 -%}{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '3840x' }} 3840w,{%- endif -%}
+                  {{ section.blocks[1].settings.collection.products.first.images[0] | img_url: 'master' }} {{ section.blocks[1].settings.collection.products.first.images[0].width }}w"
+                src="{{ section.blocks[1].settings.collection.products.first.images[0] | img_url: '1500x' }}"
+                loading="lazy"
+                alt="{{ section.blocks[1].settings.collection.products.first.images[0].alt | escape }}"
+                width="{{ section.blocks[1].settings.collection.products.first.images[0].width }}"
+                height="{{ section.blocks[1].settings.collection.products.first.images[0].width | divided_by: section.blocks[1].settings.collection.products.first.images[0].aspect_ratio }}"
+                class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
+              >
+
+              <p class="absolute bottom-6 left-1/2 -translate-x-1/2 px-12 py-2 border bg-white font-medium flex justify-center w-max max-w-[90%]">
+                {{ section.blocks[1].settings.collection.title }}
+              </p>
+            </a>
+          {%- endif -%}
+        </div>
+        <div class="relative pb-[calc(110.25%)] lg:pb-[calc(110.5%)] bg-gray-200">
+          {%- if section.blocks[2].settings.collection != blank -%}
+            <a href="{{ section.blocks[2].settings.collection.url }}" class="absolute w-full h-full top-0 left-0 group overflow-hidden">
+              <img
+                srcset="{%- if section.blocks[2].settings.collection.products.first.images[0].width >= 375 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '375x' }} 375w,{%- endif -%}
+                  {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 750 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '750x' }} 750w,{%- endif -%}
+                  {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 1100 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '1100x' }} 1100w,{%- endif -%}
+                  {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 1500 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '1500x' }} 1500w,{%- endif -%}
+                  {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 1780 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '1780x' }} 1780w,{%- endif -%}
+                  {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 2000 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '2000x' }} 2000w,{%- endif -%}
+                  {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 3000 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '3000x' }} 3000w,{%- endif -%}
+                  {%- if section.blocks[2].settings.collection.products.first.images[0].width >= 3840 -%}{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '3840x' }} 3840w,{%- endif -%}
+                  {{ section.blocks[2].settings.collection.products.first.images[0] | img_url: 'master' }} {{ section.blocks[2].settings.collection.products.first.images[0].width }}w"
+                src="{{ section.blocks[2].settings.collection.products.first.images[0] | img_url: '1500x' }}"
+                loading="lazy"
+                alt="{{ section.blocks[2].settings.collection.products.first.images[0].alt | escape }}"
+                width="{{ section.blocks[2].settings.collection.products.first.images[0].width }}"
+                height="{{ section.blocks[2].settings.collection.products.first.images[0].width | divided_by: section.blocks[2].settings.collection.products.first.images[0].aspect_ratio }}"
+                class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
+              >
+
+              <p class="absolute bottom-6 left-1/2 -translate-x-1/2 px-12 py-2 border bg-white font-medium flex justify-center w-max max-w-[90%]">
+                {{ section.blocks[2].settings.collection.title }}
+              </p>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="w-1/2 md:w-1/4 px-[5px] lg:px-3.75">
+        <div class="relative pb-[calc(220%+11px)] lg:pb-[calc(220%+33px)] bg-gray-200">
+          {%- if section.blocks[3].settings.collection != blank -%}
+            <a href="{{ section.blocks[3].settings.collection.url }}" class="absolute w-full h-full top-0 left-0 group overflow-hidden">
+              <img
+                srcset="{%- if section.blocks[3].settings.collection.products.first.images[0].width >= 375 -%}{{ section.blocks[3].settings.collection.products.first.images[0] | img_url: '375x' }} 375w,{%- endif -%}
+                  {%- if section.blocks[3].settings.collection.products.first.images[0].width >= 750 -%}{{ section.blocks[3].settings.collection.products.first.images[0] | img_url: '750x' }} 750w,{%- endif -%}
+                  {%- if section.blocks[3].settings.collection.products.first.images[0].width >= 1100 -%}{{ section.blocks[3].settings.collection.products.first.images[0] | img_url: '1100x' }} 1100w,{%- endif -%}
+                  {%- if section.blocks[3].settings.collection.products.first.images[0].width >= 1500 -%}{{ section.blocks[3].settings.collection.products.first.images[0] | img_url: '1500x' }} 1500w,{%- endif -%}
+                  {%- if section.blocks[3].settings.collection.products.first.images[0].width >= 1780 -%}{{ section.blocks[3].settings.collection.products.first.images[0] | img_url: '1780x' }} 1780w,{%- endif -%}
+                  {%- if section.blocks[3].settings.collection.products.first.images[0].width >= 2000 -%}{{ section.blocks[3].settings.collection.products.first.images[0] | img_url: '2000x' }} 2000w,{%- endif -%}
+                  {%- if section.blocks[3].settings.collection.products.first.images[0].width >= 3000 -%}{{ section.blocks[3].settings.collection.products.first.images[0] | img_url: '3000x' }} 3000w,{%- endif -%}
+                  {%- if section.blocks[3].settings.collection.products.first.images[0].width >= 3840 -%}{{ section.blocks[3].settings.collection.products.first.images[0] | img_url: '3840x' }} 3840w,{%- endif -%}
+                  {{ section.blocks[3].settings.collection.products.first.images[0] | img_url: 'master' }} {{ section.blocks[3].settings.collection.products.first.images[0].width }}w"
+                src="{{ section.blocks[3].settings.collection.products.first.images[0] | img_url: '1500x' }}"
+                loading="lazy"
+                alt="{{ section.blocks[3].settings.collection.products.first.images[0].alt | escape }}"
+                width="{{ section.blocks[3].settings.collection.products.first.images[0].width }}"
+                height="{{ section.blocks[3].settings.collection.products.first.images[0].width | divided_by: section.blocks[3].settings.collection.products.first.images[0].aspect_ratio }}"
+                class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
+              >
+
+              <p class="absolute bottom-6 left-1/2 -translate-x-1/2 px-12 py-2 border bg-white font-medium flex justify-center w-max max-w-[90%]">
+                {{ section.blocks[3].settings.collection.title }}
+              </p>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "List collection",
+    "max_blocks": 4,
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Danh muc sản phẩm",
+            "info": "Lựa chọn danh mục sản phẩm"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -22,51 +22,31 @@
         "Slide3"
       ]
     },
-    "rich_text": {
-      "type": "rich-text",
+    "list_collection": {
+      "type": "list-collection",
       "blocks": {
-        "heading": {
-          "type": "heading"
+        "Collection1": {
+          "type": "collection"
         },
-        "text": {
-          "type": "text"
+        "Collection2": {
+          "type": "collection"
         },
-        "button": {
-          "type": "button"
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ]
-    },
-    "featured_products": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "collection": "all",
-        "image_ratio": "square"
-      }
-    },
-    "collage": {
-      "type": "collage",
-      "blocks": {
-        "video": {
-          "type": "video"
+        "Collection3": {
+          "type": "collection"
         },
-        "product": {
-          "type": "product"
-        },
-        "collection": {
+        "Collection4": {
           "type": "collection"
         }
       },
       "block_order": [
-        "video",
-        "product",
-        "collection"
+        "Collection1",
+        "Collection2",
+        "Collection3",
+        "Collection4"
       ]
+    },
+    "featured_collection": {
+      "type": "featured-collection"
     },
     "video": {
       "type": "video"
@@ -93,9 +73,8 @@
   },
   "order": [
     "image_banner",
-    "rich_text",
-    "featured_products",
-    "collage",
+    "list_collection",
+    "featured_collection",
     "video",
     "multi_column"
   ]
