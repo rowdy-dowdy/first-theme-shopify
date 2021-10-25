@@ -46,7 +46,12 @@
       ]
     },
     "featured_collection": {
-      "type": "featured-collection"
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "sub_title": "Top view in this week",
+        "collection": "all"
+      }
     },
     "video": {
       "type": "video"

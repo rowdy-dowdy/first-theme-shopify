@@ -9,21 +9,33 @@
   }
 </style>
 
-{%- if section.settings.title != blank -%}
-  <div class="mt-[30px]">
-    <h3 class="section-title flex items-center justify-center text-2xl font-semibold mx-auto">
-      <span class="flex-none mx-4 uppercase">{{ section.settings.title }}</span>
-    </h3>
-  </div>
-{%- endif -%}
-
-{%- if section.settings.collection != blank -%}
-  <div class="flex flex-wrap justify-center space-x-4">
-    {%- for item in section.settings.products_to_show -%}
-      <div class="w-1/4 "></div>
+<div class="w-full max-w-[1200px] mx-auto px-4 mt-16">
+  {%- if section.settings.title != blank -%}
+    <div class="mt-[30px]">
+      <h3 class="section-title flex items-center justify-center text-2xl font-semibold mx-auto">
+        <span class="flex-none mx-4 uppercase">{{ section.settings.title }}</span>
+      </h3>
+    </div>
+  {%- endif -%}
+  
+  <div class="flex flex-wrap justify-center mt-6 mx-[-5px] lg:-mx-3.75">
+    {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+      <div class="w-1/4 px-[5px] lg:px-3.75 mb-8">
+        <div class="relative w-full pb-[127.571%] bg-gray-100">
+          <a href="" class="absolute w-full h-full top-0 left-0">
+            <img src="{{ product.images[0] | img_url: '320x' }}" alt="" class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110">
+          </a>
+        </div>
+        <div class="">
+          <h3 class="">{{ product.title }}</h3>
+          <span class="text-gray-600">{{ product.price }}</span>
+        </div>
+      </div>
+    {%- else -%}
+      <p class="text-center">No product in collection</p>
     {%- endfor -%}
   </div>
-{%- endif -%}
+</div>
 
 {% schema %}
 {
@@ -35,6 +47,12 @@
       "id": "title",
       "default": "Featured collection",
       "label": "Bộ sựu tập nổi bật"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "default": "Featured collection",
+      "label": "Sub title"
     },
     {
       "type": "collection",
