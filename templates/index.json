@@ -26,16 +26,28 @@
       "type": "list-collection",
       "blocks": {
         "Collection1": {
-          "type": "collection"
+          "type": "collection",
+          "settings": {
+            "collection": "Jewelry"
+          }
         },
         "Collection2": {
-          "type": "collection"
+          "type": "collection",
+          "settings": {
+            "collection": "men"
+          }
         },
         "Collection3": {
-          "type": "collection"
+          "type": "collection",
+          "settings": {
+            "collection": "women"
+          }
         },
         "Collection4": {
-          "type": "collection"
+          "type": "collection",
+          "settings": {
+            "collection": "t-shirt"
+          }
         }
       },
       "block_order": [
