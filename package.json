@@ -4,10 +4,13 @@
   "description": "[![Build status](https://github.com/shopify/dawn/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Shopify/dawn/actions/workflows/ci.yml?query=branch%3Amain)\r [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?color=informational)](/.github/CONTRIBUTING.md)",
   "main": "tailwind.config.js",
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.2.2",
     "concurrently": "^6.3.0",
     "tailwindcss": "^2.2.17"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "tailwindcss-line-clamp": "^1.0.5"
+  },
   "scripts": {
     "dev:css": "npx tailwindcss -o assets/application.css --watch",
     "build:css": "npx tailwindcss -o assets/application.css --minify",

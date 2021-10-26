@@ -68,6 +68,16 @@ box-icon {
   display: none;
 }
 
+#shopify-section-announcement {
+  z-index: 11;
+  position: relative;
+}
+
+#shopify-section-header {
+  z-index: 10;
+  position: relative;
+}
+
 #shopify-section-header.animate {
   transition: all .3s ease;
 }
@@ -111,5 +121,14 @@ box-icon {
 
 .icon-close:hover .icon::after {
   transform: rotate(-45deg);
+}
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  display: inline-block;
+  width: 60px;
+  height: 2px;
+  background: #222;
 }
 

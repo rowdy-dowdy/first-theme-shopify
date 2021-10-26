@@ -53,34 +53,28 @@
         "collection": "all"
       }
     },
-    "video": {
-      "type": "video"
+    "featured_blog": {
+      "type": "featured-blog",
+      "settings": {
+        "title": "LATES FROM BLOG",
+        "sub_title": "The freshest and most exciting news",
+        "blog": "News"
+      }
     },
-    "multi_column": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column"
-        },
-        "column2": {
-          "type": "column"
-        },
-        "column3": {
-          "type": "column"
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ]
+    "best_seller": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "BEST SELLER",
+        "sub_title": "Top sale in this week",
+        "collection": "all"
+      }
     }
   },
   "order": [
     "image_banner",
     "list_collection",
     "featured_collection",
-    "video",
-    "multi_column"
+    "best_seller",
+    "featured_blog"
   ]
 }

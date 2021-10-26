@@ -11,30 +11,25 @@
     - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
 {% endcomment %}
 
-<link rel="stylesheet" href="{{ 'component-pagination.css' | asset_url }}" media="print" onload="this.media='all'">
-<noscript>{{ 'component-pagination.css' | asset_url | stylesheet_tag }}</noscript>
-
 {%- if paginate.parts.size > 0 -%}
-  <div class="pagination-wrapper">
-    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
-      <ul class="pagination__list list-unstyled" role="list">
+  <div class="my-12">
+    <nav class="border-t">
+      <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-6 md:space-x-8 px-2 py-5">
       {%- if paginate.previous -%}
         <li>
-          <a href="{{ paginate.previous.url }}{{ anchor }}" class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.previous' | t }}">
-            {% render 'icon-caret' %}
-          </a>
+          <a href="{{ paginate.previous.url }}" class="hover:text-red-500">Prev</a>
         </li>
       {%- endif -%}
 
       {%- for part in paginate.parts -%}
         <li>
           {%- if part.is_link -%}
-            <a href="{{ part.url }}{{ anchor }}" class="pagination__item link" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+            <a href="{{ part.url }}">{{ part.title }}</a>
           {%- else -%}
             {%- if part.title == paginate.current_page -%}
-              <span class="pagination__item pagination__item--current" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</span>
+              <span class="text-red-500">{{ part.title }}</span>
             {%- else -%}
-              <span class="pagination__item">{{ part.title }}</span>
+              <span>{{ part.title }}</span>
             {%- endif -%}
           {%- endif -%}
         </li>
@@ -42,9 +37,7 @@
 
       {%- if paginate.next -%}
         <li>
-          <a href="{{ paginate.next.url }}{{ anchor }}" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.next' | t }}" >
-            {%- render 'icon-caret' -%}
-          </a>
+          <a href="{{ paginate.next.url }}" class="hover:text-red-500" >Next</a>
         </li>
       {%- endif -%}
       </ul>
