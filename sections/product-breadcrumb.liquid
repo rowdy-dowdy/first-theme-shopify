@@ -1,0 +1,31 @@
+<div class="bg-gray-50 text-sm py-3.5">
+  <div class="w-full max-w-[1200px] mx-auto px-4 flex justify-between">
+    <div class="flex items-center space-x-1.5">
+      <a href="/" class="hover:text-sky-600">Home</a>
+      <i class='bx bx-chevron-right'></i>
+      {%- if collection.title -%}
+        <a href="{{ product.collections.first.url }}" class="hover:text-sky-600">{{ collection.title }}</a> 
+        <i class='bx bx-chevron-right'></i>
+      {%- endif -%}
+      <span class="text-gray-500">{{ product.title }}</span>
+    </div>
+
+    {%- if collection.title -%}
+      <div class="flex items-center space-x-2">
+        {%- if collection.previous_product -%}
+          <a href="{{ collection.previous_product.url }}" class="hover:text-sky-600">
+            <i class='bx bx-chevron-left text-2xl' ></i>
+          </a>
+        {%- endif -%}
+        <a href="{{ product.collections.first.url }}" class="hover:text-sky-600">
+          <i class='bx bx-grid-alt text-xl' ></i>
+        </a>
+        {%- if collection.next_product -%}
+          <a href="{{ collection.next_product.url }}" class="hover:text-sky-600">
+            <i class='bx bx-chevron-right text-2xl' ></i>
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>

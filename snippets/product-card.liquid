@@ -29,7 +29,7 @@
 
 <div class="flex flex-col">
   <div class="relative w-full pb-[127%] group overflow-hidden">
-    <a href="{{ product_card_product.url }}">
+    <a href="{{ product_card_product.url | within: collection }}">
       <img
         srcset="{%- if product_card_product.featured_media.width >= 165 -%}{{ product_card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
           {%- if product_card_product.featured_media.width >= 360 -%}{{ product_card_product.featured_media | img_url: '360x' }} 360w,{%- endif -%}
