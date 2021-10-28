@@ -1,3 +1,4 @@
+{{ 'drift-basic.min.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'Drift.min.js' | asset_url }}"></script>
 
 <style>
@@ -51,14 +52,21 @@
     opacity: 1;
     visibility: visible;
   }
+
+  .drift-bounding-box {
+    z-index: 1;
+    background: rgba(255,255,255,.5);
+    border: 1px solid rgba(82, 82, 91,1);
+  }
+
 </style>
 
 <div class="mt-10">
   <div class="w-full max-w-[1200px] mx-auto px-4 flex justify-between">
-    <div class="w-full flex items-start space-x-4">
-      <div class="flex-1 flex space-x-3">
-        <div class="flex-none w-20 relative">
-          <div id="swiperProduct1" class="absolute w-full h-full top-0 left-0 overflow-hidden">
+    <div class="w-full flex flex-wrap md:flex-nowrap items-start md:space-x-4">
+      <div class="w-full md:w-1/2 flex flex-col-reverse lg:flex-row lg:space-x-3">
+        <div class="flex-none flex w-full lg:w-20 relative mt-3 lg:m-0">
+          <div id="swiperProduct1" class="lg:absolute w-full lg:!h-full top-0 left-0 overflow-hidden">
             <div class="swiper-wrapper">
               {%- for image in product.images -%}
                 <div class="swiper-slide !h-auto overflow-hidden cursor-pointer">
@@ -82,10 +90,10 @@
                 </div>
               {%- endfor -%}
             </div>
-            <div class="swiper-button-next text-3xl !bottom-2 !top-auto !left-1/2 !-translate-x-1/2 !w-8 !h-8 !bg-white/80 !text-gray-800 !mt-0">
+            <div class="!hidden !lg:flex swiper-button-next text-3xl !bottom-2 !top-auto !left-1/2 !-translate-x-1/2 !w-8 !h-8 !bg-white/80 !text-gray-800 !mt-0">
               <i class='bx bx-chevron-down' ></i>
             </div>
-            <div class="swiper-button-prev text-3xl !top-2 !bottom-auto !left-1/2 !-translate-x-1/2 !w-8 !h-8 !bg-white/80 !text-gray-800 !mt-0">
+            <div class="!hidden !lg:flex swiper-button-prev text-3xl !top-2 !bottom-auto !left-1/2 !-translate-x-1/2 !w-8 !h-8 !bg-white/80 !text-gray-800 !mt-0">
               <i class='bx bx-chevron-up' ></i>
             </div>
           </div>
@@ -105,7 +113,7 @@
                           {%- if image.width >= 940 -%}{{ image | img_url: '940x' }} 940w,{%- endif -%}
                           {%- if image.width >= 1066 -%}{{ image | img_url: '1066x' }} 1066w,{%- endif -%}
                           {{ image | img_url: 'master' }} {{ image.width }}w"
-                        src="{{ image | img_url: '165x' }}"
+                        src="{{ image | img_url: '1500x' }}"
                         alt="{{ image.alt | escape }}"
                         class="drift-img absolute w-full h-full top-0 left-0 object-cover"
                         width="{{ image.width }}"
@@ -127,7 +135,7 @@
         </div>
       </div>
 
-      <div class="flex-1 drift-pane">
+      <div class="w-full md:w-1/2 mt-8 md:mt-0 relative">
         <h1 class="text-lg font-semibold">{{ product.title }}</h1>
         <div class="flex justify-between items-center mt-3">
           <p class="text-gray-500 text-2xl font-base">
@@ -186,19 +194,19 @@
           </div>
         {%- endif -%}
 
-        <div class="flex flex-wrap space-x-4 mt-10">
-          <div class="flex">
+        <div class="flex flex-wrap lg:space-x-4 mt-10">
+          <div class="flex lg:order-1 mr-4 lg:mr-0">
             <a href="#" class="w-10 h-10 grid place-items-center border border-r-0 border-gray-800 rounded-l-full hover:text-sky-600 text-lg"><i class='bx bx-minus' ></i></a>
             <input type="text" class="w-10 h-10 focus:outline-none border-t border-b border-gray-800 text-center" value="1">
             <a href="#" class="w-10 h-10 grid place-items-center border border-l-0 border-gray-800 rounded-r-full hover:text-sky-600 text-lg"><i class='bx bx-plus' ></i></a>
           </div>
 
-          <button class="rounded-full px-8 py-2 h-10 bg-sky-500 text-white hover:bg-gray-800">ADD TO CART</button>
-
-          <button class="w-10 h-10 border border-gray-800 grid place-items-center text-xl rounded-full hover:text-sky-600 hover:border-sky-500 group">
+          <button class="lg:order-3 w-10 h-10 border border-gray-800 grid place-items-center text-xl rounded-full hover:text-sky-600 hover:border-sky-500 group">
             <i class='bx bx-heart' ></i>
             <i class='bx bx-heart absolute invisible animate-ping group-hover:visible' ></i>
           </button>
+
+          <button class="w-full ml-0 mt-4 lg:mt-0 lg:w-auto lg:order-2 rounded-full px-8 py-2 h-10 bg-sky-500 text-white hover:bg-gray-800">ADD TO CART</button>
         </div>
 
         <div class="flex flex-wrap space-x-4 text-sm mt-10">
@@ -223,7 +231,7 @@
           <p>
             <span class="text-gray-400">Tags: </span>
             {% for tag in product.tags %}
-              <a href="/collections/{%- if collection.title -%} {{- collection.title -}} {%- else -%} all {%- endif -%}/ {{- tag -}}" class="hover:text-sky-600">{{ tag }}</a>
+              <a href="/collections/{%- if collection.title -%} {{- collection.title -}} {%- else -%} all {%- endif -%}/ {{- tag | handle -}}" class="hover:text-sky-600">{{ tag }}</a>
                 {% if forloop.last != true -%}
                   ,
                 {% endif -%}
@@ -251,69 +259,72 @@
             <i class='bx bx-plus-medical group-hover:-translate-y-1 transition-all duration-300 ease-in-out'></i>
           </a>
         </div>
+
+        <div class="drift-pane hidden lg:block absolute w-full top-0 left-0 pb-[100%] pointer-events-none"></div>
       </div>
     </div>
   </div>
 
-  <div class="px-4 mt-10 py-12 bg-gray-100">
-    <ul class="flex w-full justify-center py-4 description space-x-6">
-      <li><a href="#" class="active px-6 py-2 border-gray-800 text-gray-400 hover:text-gray-800 rounded-full">Description</a></li>
-      <li><a href="#" class="px-6 py-2 border-gray-800 text-gray-500 hover:text-gray-800 rounded-full">Additional Information</a></li>
-      <li><a href="#" class="px-6 py-2 border-gray-800 text-gray-500 hover:text-gray-800 rounded-full">Warranty & Shipping</a></li>
-      <li><a href="#" class="px-6 py-2 border-gray-800 text-gray-500 hover:text-gray-800 rounded-full">Reviews</a></li>
-    </ul>
-
-    <div class="flex flex-wrap lg:space-x-8">
-      <div class="w-full lg:flex-1 text-gray-500 text-center text-sm">
-        <h6 class="uppercase font-semibold text-gray-800 text-base">FIGHTING FIT</h6>
-        <p class="mt-3">Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5’5. !!</p>
-        <p class="mt-3">Typography is the work of typesetters, compositors, typographers, graphic designers, art directors, manga artists, comic book artists, graffiti artists, and now—anyone who arranges words, letters, numbers, and symbols for publication, display, or distribution—from clerical workers and newsletter writers to anyone self-publishing materials.</p>
-        <p class="mt-3">Hit your next boxing workout with a combination it’s never seen before in the Combat Drop Arm Tank, including a freedom-instilling regular fit and dropped armhole to allow you to throw jabs and hooks at the punching bag with ease. A lightweight material keeps you fighting fit, and fresh.</p>
-      </div>
-      <div class="w-full lg:flex-1">
-        <h6 class="uppercase font-semibold text-gray-800 text-base text-center">FIND YOUR SIZE</h6>
-        <table class="border-collapse w-full mt-3 text-gray-500">
-          <thead>
-            <tr>
-              <th class="border border-gray-600 p-2">SIZE</th>
-              <th class="border border-gray-600 p-2">CHEST</th>
-              <th class="border border-gray-600 p-2">WAIST</th>
-              <th class="border border-gray-600 p-2">	HIPS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="border border-gray-600 p-2">S</td>
-              <td class="border border-gray-600 p-2">39</td>
-              <td class="border border-gray-600 p-2">31</td>
-              <td class="border border-gray-600 p-2">35</td>
-            </tr>
-            <tr>
-              <td class="border border-gray-600 p-2">M</td>
-              <td class="border border-gray-600 p-2">41</td>
-              <td class="border border-gray-600 p-2">33</td>
-              <td class="border border-gray-600 p-2">37</td>
-            </tr>
-            <tr>
-              <td class="border border-gray-600 p-2">L</td>
-              <td class="border border-gray-600 p-2">43</td>
-              <td class="border border-gray-600 p-2">35</td>
-              <td class="border border-gray-600 p-2">39</td>
-            </tr>
-            <tr>
-              <td class="border border-gray-600 p-2">XL</td>
-              <td class="border border-gray-600 p-2">45</td>
-              <td class="border border-gray-600 p-2">37</td>
-              <td class="border border-gray-600 p-2">41</td>
-            </tr>
-            <tr>
-              <td class="border border-gray-600 p-2">XXL</td>
-              <td class="border border-gray-600 p-2">47</td>
-              <td class="border border-gray-600 p-2">39</td>
-              <td class="border border-gray-600 p-2">43</td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="bg-gray-100 mt-20 py-10">
+    <div class="w-full max-w-[1200px] mx-auto px-4 mb-2">
+      <ul class="flex w-full justify-center py-6 description space-x-6">
+        <li><a href="#" class="active px-6 py-2 border-gray-800 text-gray-400 hover:text-gray-800 rounded-full">Description</a></li>
+        <li><a href="#" class="px-6 py-2 border-gray-800 text-gray-500 hover:text-gray-800 rounded-full">Additional Information</a></li>
+        <li><a href="#" class="px-6 py-2 border-gray-800 text-gray-500 hover:text-gray-800 rounded-full">Warranty & Shipping</a></li>
+        <li><a href="#" class="px-6 py-2 border-gray-800 text-gray-500 hover:text-gray-800 rounded-full">Reviews</a></li>
+      </ul>
+      <div class="flex flex-wrap mt-6 lg:space-x-8">
+        <div class="w-full lg:flex-1 text-gray-500 text-center text-sm">
+          <h6 class="uppercase font-semibold text-gray-800 text-base">FIGHTING FIT</h6>
+          <p class="mt-3">Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5’5. !!</p>
+          <p class="mt-3">Typography is the work of typesetters, compositors, typographers, graphic designers, art directors, manga artists, comic book artists, graffiti artists, and now—anyone who arranges words, letters, numbers, and symbols for publication, display, or distribution—from clerical workers and newsletter writers to anyone self-publishing materials.</p>
+          <p class="mt-3">Hit your next boxing workout with a combination it’s never seen before in the Combat Drop Arm Tank, including a freedom-instilling regular fit and dropped armhole to allow you to throw jabs and hooks at the punching bag with ease. A lightweight material keeps you fighting fit, and fresh.</p>
+        </div>
+        <div class="w-full lg:flex-1">
+          <h6 class="uppercase font-semibold text-gray-800 text-base text-center">FIND YOUR SIZE</h6>
+          <table class="border-collapse w-full mt-3 text-gray-500">
+            <thead>
+              <tr>
+                <th class="border border-gray-600 p-2">SIZE</th>
+                <th class="border border-gray-600 p-2">CHEST</th>
+                <th class="border border-gray-600 p-2">WAIST</th>
+                <th class="border border-gray-600 p-2">	HIPS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-600 p-2">S</td>
+                <td class="border border-gray-600 p-2">39</td>
+                <td class="border border-gray-600 p-2">31</td>
+                <td class="border border-gray-600 p-2">35</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-600 p-2">M</td>
+                <td class="border border-gray-600 p-2">41</td>
+                <td class="border border-gray-600 p-2">33</td>
+                <td class="border border-gray-600 p-2">37</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-600 p-2">L</td>
+                <td class="border border-gray-600 p-2">43</td>
+                <td class="border border-gray-600 p-2">35</td>
+                <td class="border border-gray-600 p-2">39</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-600 p-2">XL</td>
+                <td class="border border-gray-600 p-2">45</td>
+                <td class="border border-gray-600 p-2">37</td>
+                <td class="border border-gray-600 p-2">41</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-600 p-2">XXL</td>
+                <td class="border border-gray-600 p-2">47</td>
+                <td class="border border-gray-600 p-2">39</td>
+                <td class="border border-gray-600 p-2">43</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -355,13 +366,19 @@
   import Swiper from 'https://unpkg.com/swiper@7/swiper-bundle.esm.browser.min.js'
 
   const swiper = new Swiper('#swiperProduct1', {
-    slidesPerView: "auto",
-    direction: "vertical",
+    slidesPerView: 4,
     spaceBetween: 15,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
+    breakpoints: {
+      1024: {
+        slidesPerView: "auto",
+        direction: "vertical",
+        autoHeight: true
+      }
+    }
   });
 
   const swiper2 = new Swiper('#swiperProduct2', {
@@ -377,13 +394,16 @@
   });
 
   // DRIFT //
-
-  const driftImgs = document.querySelectorAll('.drift-img');
+  const drift = []
+  const driftImgs = [...document.querySelectorAll('.drift-img')];
   const pane = document.querySelector('.drift-pane');
-  driftImgs.map(img => {
-    new Drift(img, {
+
+  driftImgs.map((img,index) => {
+    drift[index] = new Drift(img, {
       paneContainer: pane,
-      inlinePane: true
+      inlinePane: false,
+      sourceAttribute: 'src',
+      hoverBoundingBox: true,
     });
   });
 
