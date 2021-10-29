@@ -120,9 +120,11 @@
         </div>
 
       {%- else -%}
-        <p class="flex px-4 w-full my-24 space-x-2 py-4 border-2 border-amber-600 text-amber-600">
-          <i class='bx bx-error'></i>
-          <span>No products were found matching your selection.</span>
+        <p class="border-2 w-full border-amber-600 text-amber-600 flex items-center text-left px-6 py-2">
+          <span class="text-xl">
+            <i class='bx bx-error' ></i>
+          </span>
+          <span class="pl-4">No products were found matching your selection.</span>
         </p>
       {% endfor %}
     </div>

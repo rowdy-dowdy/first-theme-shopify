@@ -28,7 +28,7 @@
         "Collection1": {
           "type": "collection",
           "settings": {
-            "collection": "Jewelry"
+            "collection": "jewelry"
           }
         },
         "Collection2": {

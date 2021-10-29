@@ -97,16 +97,58 @@
 
 <div class="w-full max-w-[1200px] mx-auto px-4 my-[30px]">
   {%- if search.performed -%}
-    <div class="flex items-center justify-center text-sm lg:text-base text-gray-600">
-      <div class="flex justify-center space-x-2">
-        <a href="#" class="cat-view-page view-list"></a>
-        <a href="#" class="cat-view-page view-1"></a>
-        <a href="#" class="cat-view-page view-2"></a>
-        <a href="#" class="hidden sm:inline cat-view-page view-3"></a>
-        <a href="#" class="hidden lg:inline cat-view-page view-4"></a>
-        <a href="#" class="hidden lg:inline cat-view-page view-5"></a>
+    {%- if search.results_count > 0 -%} 
+      <div class="flex items-center justify-center text-sm lg:text-base text-gray-600">
+        <div class="flex justify-center space-x-2">
+          <a href="#" class="cat-view-page view-list"></a>
+          <a href="#" class="cat-view-page view-1"></a>
+          <a href="#" class="cat-view-page view-2"></a>
+          <a href="#" class="hidden sm:inline cat-view-page view-3"></a>
+          <a href="#" class="hidden lg:inline cat-view-page view-4"></a>
+          <a href="#" class="hidden lg:inline cat-view-page view-5"></a>
+        </div>
       </div>
-    </div>
+
+      {% paginate search.results by 12 %}
+        <div class="flex flex-wrap justify-center mx-[-5px] lg:mx-[-15px] mt-12">
+          {% for item in search.results %}
+            {% if item.object_type == 'product' %}
+              <div class="w-1/2 md:w-1/3 lg:w-1/4 px-[5px] lg:px-[15px] mb-6">
+                {% render 'product-card',
+                  product_card_product: item
+                %}
+              </div>
+            {% endif %}
+
+          {%- else -%}
+            <p class="border-2 w-full border-amber-600 text-amber-600 flex items-center text-left px-6 py-2">
+              <span class="text-xl">
+                <i class='bx bx-error' ></i>
+              </span>
+              <span class="pl-4">No products were found matching your selection.</span>
+            </p>
+          {% endfor %}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          {% render 'pagination', paginate: paginate %}
+        {%- endif -%}
+      {% endpaginate %} 
+
+    {%- else -%}
+      <div class="min-h-[50vh] text-center flex flex-col items-center justify-center">
+        <span class="text-[calc(3rem+10vmin)] text-gray-500">
+          <i class='bx bx-search'></i>
+        </span>
+        <p class="border-2 w-full border-amber-600 text-amber-600 flex items-center text-left px-6 py-2">
+          <span class="text-xl">
+            <i class='bx bx-error' ></i>
+          </span>
+          <span class="pl-4">No products were found matching your selection.</span>
+        </p>
+      </div>
+    {%- endif -%}
+    
   {%- else -%}
     <div class="mt-20 w-full max-w-3xl mx-auto">
       <form action="{{ routes.search_url }}" method="get" role="search" class="block">
@@ -119,6 +161,7 @@
             placeholder="Search for products or posts"
           >
           <input name="options[prefix]" type="hidden" value="last">
+          <input type="hidden" name="type" value="product">
 
           <button type="submit" class="flex-none flex items-center justify-center text-xl w-12 h-12 bg-gray-800 text-white hover:bg-sky-500 rounded-none" aria-label="{{ 'general.search.search' | t }}">
             <i class='bx bx-search'></i>
@@ -130,7 +173,7 @@
         <p class="uppercase px-4 py-3 bg-gray-50 border-b border-r border-gray-200 font-semibold">NEED SOME INSPIRATION?</p>
         <div class="flex flex-wrap">
           {% for product in collections.all.products limit: 6 %}
-            <div class="w-1/2 p-4 border-b border-r border-gray-200">
+            <div class="w-full md:w-1/2 p-4 border-b border-r border-gray-200 hover:bg-gray-100 transition-all-0.3">
               <div class="flex space-x-3">
                 <a href="{{ product.url }}" class="flex-none block w-20 h-24 bg-gray-100 relative">
                   <img
@@ -150,7 +193,7 @@
                   >
                 </a>
                 <div class="flex-grow min-w-0 pt-1">
-                  <a href="{{ product.url }}" class="font-semibold">{{ product.title }}</a>
+                  <a href="{{ product.url }}" class="font-semibold hover:text-sky-600 transition-all-0.3">{{ product.title }}</a>
                   {%- if product.price_varies -%}
                     <p class="text-gray-500 text-sm">
                       <span class="line-through">${{ product.price_min}}</span> -
@@ -164,10 +207,10 @@
             </div>
           {% endfor %}
         </div>
-        <a href="/collections/all" class="block w-full text-center px-4 py-3 border-r border-gray-200">
-          <span class="group transition-all duration-300 ease-in-out hover:text-sky-600 font-semibold">
+        <a href="/collections/all" class="block w-full text-center px-4 py-3 border-r border-gray-200 hover:bg-gray-100">
+          <span class="group transition-all-0.3 hover:text-sky-600 font-semibold">
             VIEW ALL
-            <i class='bx bx-right-arrow-alt relative group-hover:translate-x-1 transition-all duration-300 ease-in-out align-middle' ></i>
+            <i class='bx bx-right-arrow-alt relative group-hover:translate-x-1 transition-all-0.3 align-middle' ></i>
           </span>
         </a>
       </div>

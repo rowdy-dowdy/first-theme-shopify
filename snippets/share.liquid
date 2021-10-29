@@ -1,0 +1,129 @@
+{% comment %}
+    Renders a share
+
+    Accepts:
+    - bg_color: {Boolean} Show the background. Default: false
+    - show_title: {Boolean} Show the title. Default: false
+
+    Usage:
+    {% render 'share', bg_color: false %}
+{% endcomment %}
+
+<div class="flex flex-wrap justify-center space-x-4 {% if bg_color %} text-xl {% else %} text-2xl {% endif %}">
+  {%- if settings.social_facebook_link != blank -%}
+    <a href="#" class="group relative">
+      <span class="flex justify-center items-center w-8 h-8 group-hover:-translate-y-1 transition-all-0.3 rounded-full {% if bg_color %} bg-gray-800 text-white {% endif %} group-hover:text-blue-600">
+        <i class='bx bxl-facebook' ></i>
+      </span>
+
+      {% if show_title %}
+        <div class="absolute w-0 h-0 rounded-sm left-1/2 -translate-x-1/2 -top-3 border-[6px] border-transparent border-t-gray-800 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0"></div>
+        <span class="absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+.75rem)] bg-gray-800 whitespace-nowrap px-3 py-2 text-xs text-white rounded-sm transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0">Share on facebook</span>
+        {% endif %}
+    </a>
+  {%- endif -%}
+
+  {%- if settings.social_twitter_link != blank -%}
+    <a href="#" class="group relative">
+      <span class="flex justify-center items-center w-8 h-8 group-hover:-translate-y-1 transition-all-0.3 rounded-full {% if bg_color %} bg-gray-800 text-white {% endif %} group-hover:text-sky-600">
+        <i class='bx bxl-twitter' ></i>
+      </span>
+
+      {% if show_title %}
+        <div class="absolute w-0 h-0 rounded-sm left-1/2 -translate-x-1/2 -top-3 border-[6px] border-transparent border-t-gray-800 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0"></div>
+        <span class="absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+.75rem)] bg-gray-800 whitespace-nowrap px-3 py-2 text-xs text-white rounded-sm transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0">Share on twitter</span>
+      {% endif %}
+    </a>
+  {%- endif -%}
+
+  {%- if settings.social_pinterest_link != blank -%}
+    <a href="#" class="group relative">
+      <span class="flex justify-center items-center w-8 h-8 group-hover:-translate-y-1 transition-all-0.3 rounded-full {% if bg_color %} bg-gray-800 text-white {% endif %} group-hover:text-rose-600">
+        <i class='bx bxl-pinterest-alt' ></i>
+      </span>
+
+      {% if show_title %}
+        <div class="absolute w-0 h-0 rounded-sm left-1/2 -translate-x-1/2 -top-3 border-[6px] border-transparent border-t-gray-800 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0"></div>
+        <span class="absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+.75rem)] bg-gray-800 whitespace-nowrap px-3 py-2 text-xs text-white rounded-sm transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0">Share on pinterest</span>
+      {% endif %}
+    </a>
+  {%- endif -%}
+
+  {%- if settings.social_instagram_link != blank -%}
+    <a href="#" class="group relative">
+      <span class="flex justify-center items-center w-8 h-8 group-hover:-translate-y-1 transition-all-0.3 rounded-full {% if bg_color %} bg-gray-800 text-white {% endif %} group-hover:text-blue-600">
+        <i class='bx bxl-instagram-alt' ></i>
+      </span>
+
+      {% if show_title %}
+        <div class="absolute w-0 h-0 rounded-sm left-1/2 -translate-x-1/2 -top-3 border-[6px] border-transparent border-t-gray-800 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0"></div>
+        <span class="absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+.75rem)] bg-gray-800 whitespace-nowrap px-3 py-2 text-xs text-white rounded-sm transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0">Share on instagram</span>
+      {% endif %}
+    </a>
+  {%- endif -%}
+
+  {%- if settings.social_tiktok_link != blank -%}
+    <a href="#" class="group relative">
+      <span class="flex justify-center items-center w-8 h-8 group-hover:-translate-y-1 transition-all-0.3 rounded-full {% if bg_color %} bg-gray-800 text-white {% endif %} group-hover:text-pink-600">
+        <i class='bx bxl-tiktok' ></i>
+      </span>
+
+      {% if show_title %}
+        <div class="absolute w-0 h-0 rounded-sm left-1/2 -translate-x-1/2 -top-3 border-[6px] border-transparent border-t-gray-800 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0"></div>
+        <span class="absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+.75rem)] bg-gray-800 whitespace-nowrap px-3 py-2 text-xs text-white rounded-sm transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0">Share on tiktok</span>
+      {% endif %}
+    </a>
+  {%- endif -%}
+
+  {%- if settings.social_tumblr_link != blank -%}
+    <a href="#" class="group relative">
+      <span class="flex justify-center items-center w-8 h-8 group-hover:-translate-y-1 transition-all-0.3 rounded-full {% if bg_color %} bg-gray-800 text-white {% endif %}">
+        <i class='bx bxl-tumblr' ></i>
+      </span>
+
+      {% if show_title %}
+        <div class="absolute w-0 h-0 rounded-sm left-1/2 -translate-x-1/2 -top-3 border-[6px] border-transparent border-t-gray-800 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0"></div>
+        <span class="absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+.75rem)] bg-gray-800 whitespace-nowrap px-3 py-2 text-xs text-white rounded-sm transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0">Share on tumblr</span>
+      {% endif %}
+    </a>
+  {%- endif -%}
+
+  {%- if settings.social_snapchat_link != blank -%}
+    <a href="#" class="group relative">
+      <span class="flex justify-center items-center w-8 h-8 group-hover:-translate-y-1 transition-all-0.3 rounded-full {% if bg_color %} bg-gray-800 text-white {% endif %} group-hover:text-yellow-600">
+        <i class='bx bxl-snapchat' ></i>
+      </span>
+
+      {% if show_title %}
+        <div class="absolute w-0 h-0 rounded-sm left-1/2 -translate-x-1/2 -top-3 border-[6px] border-transparent border-t-gray-800 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0"></div>
+        <span class="absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+.75rem)] bg-gray-800 whitespace-nowrap px-3 py-2 text-xs text-white rounded-sm transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0">Share on snapcha</span>
+      {% endif %}
+    </a>
+  {%- endif -%}
+
+  {%- if settings.social_youtube_link != blank -%}
+    <a href="#" class="group relative">
+      <span class="flex justify-center items-center w-8 h-8 group-hover:-translate-y-1 transition-all-0.3 rounded-full {% if bg_color %} bg-gray-800 text-white {% endif %} group-hover:text-red-600">
+        <i class='bx bxl-youtube' ></i>
+      </span>
+
+      {% if show_title %}
+        <div class="absolute w-0 h-0 rounded-sm left-1/2 -translate-x-1/2 -top-3 border-[6px] border-transparent border-t-gray-800 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0"></div>
+        <span class="absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+.75rem)] bg-gray-800 whitespace-nowrap px-3 py-2 text-xs text-white rounded-sm transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0">Share on youtube</span>
+      {% endif %}
+    </a>
+  {%- endif -%}
+
+  {%- if settings.social_vimeo_link != blank -%}
+    <a href="#" class="group relative">
+      <span class="flex justify-center items-center w-8 h-8 group-hover:-translate-y-1 transition-all-0.3 rounded-full {% if bg_color %} bg-gray-800 text-white {% endif %} group-hover:text-sky-600">
+        <i class='bx bxl-vimeo' ></i>
+      </span>
+
+      {% if show_title %}
+        <div class="absolute w-0 h-0 rounded-sm left-1/2 -translate-x-1/2 -top-3 border-[6px] border-transparent border-t-gray-800 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0"></div>
+        <span class="absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+.75rem)] bg-gray-800 whitespace-nowrap px-3 py-2 text-xs text-white rounded-sm transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0">Share on vimeo</span>
+      {% endif %}
+    </a>
+  {%- endif -%}
+</div>
