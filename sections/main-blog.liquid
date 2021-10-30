@@ -29,9 +29,9 @@
     <div class="swiper-wrapper">
       {%- for article in blog.articles limit: 6 -%}
         <div class="swiper-slide">
-          <div class="w-full relative pb-[75%] bg-gray-50 group overflow-hidden">
+          <div class="w-full relative {% if blogSize == 1 %} pb-[25%] {% elsif blogSize == 2 %} pb-[50%] {% endif %} pb-[75%] bg-gray-50 group overflow-hidden">
             <a href="{{ article.url }}" class="absolute w-full h-full top-0 left-0">
-              <img src="{{ article.image.src | img_url: '600x' }}" alt="" class="w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-110">
+              <img src="{{ article.image.src | img_url: '1000x' }}" alt="" class="w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-110">
             </a>
             <div class="bg-black/80 p-4 absolute w-full left-0 bottom-0 text-white text-center">
               <div class="text-xs text-gray-300">
@@ -117,6 +117,8 @@
 <script type="module">
   // SLIDER SWIPER //
 
+  let blogSize = ({{ blogSize }} >= 3) ? 3 : {{ blogSize }}
+
   import Swiper from 'https://unpkg.com/swiper@7/swiper-bundle.esm.browser.min.js'
 
   const swiper = new Swiper('#swiperBlog', {
@@ -127,7 +129,7 @@
     },
     breakpoints: {
       768: {
-        slidesPerView: 3
+        slidesPerView: blogSize
       }
     }
   });

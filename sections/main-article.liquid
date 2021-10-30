@@ -1,3 +1,10 @@
+<style>
+  #comment_form input::-webkit-input-placeholder,
+  #comment_form textarea::-webkit-input-placeholder {
+    font-size: 14px;
+  }
+</style>
+
 <div class="w-full h-48 bg-gray-200 relative">
   <img
     srcset="{%- if article.image.width >= 165 -%}{{ article.image | img_url: '165x' }} 165w,{%- endif -%}
@@ -30,9 +37,9 @@
 </div>
 
 <div class="w-full max-w-[1200px] mx-auto px-4 mt-12">
-  {{ article.content }}
+  <div class="content">{{ article.content }}</div>
 
-  <div class="mt-12 w-full flex flex-col sm:flex-row items-center md:justify-between px-4 py-3 border border-gray-300 text-gray-600">
+  <div class="mt-12 w-full flex flex-col sm:flex-row items-center md:justify-between px-4 py-3 border border-gray-200 text-gray-600">
     <p>
       <i class='bx bxs-purchase-tag align-middle' ></i>
       {% for tag in article.tags %}
@@ -55,7 +62,7 @@
     </div>
   {%- endif -%}
 
-  <div class="flex mt-16 justify-center items-center text-4xl">
+  <div class="flex overflow-hidden mt-16 justify-center items-center text-4xl">
     {% if blog.previous_article == nil %} 
       {%- assign article_prev = blog.articles.first -%}
     {% else %}
@@ -68,7 +75,7 @@
       {%- assign article_next = blog.next_article -%}
     {% endif %}
     
-    <a href="{{ article_prev.url }}" class="w-full max-w-[100px] flex justify-center items-center hover:text-sky-600 relative group">
+    <a href="{{ article_prev.url }}" class="w-full max-w-[100px] flex justify-center items-center text-gray-600 hover:text-sky-600 relative group">
       <i class='bx bx-chevron-left' ></i>
 
       <span class="absolute w-0 h-0 rounded-sm left-1/2 -translate-x-1/2 -top-3 border-[6px] border-transparent border-t-gray-800 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible translate-y-4 group-hover:translate-y-0"></span>
@@ -90,31 +97,109 @@
 
 
   {%- if article.comments_count > 0 and section.settings.show_comment -%}
-    <div class="mt-14 border-t  border-gray-300">
+    <div id="comments" class="mt-14 border-t  border-gray-200">
       <h2 class="text-2xl uppercase font-semibold tracking-wide mt-8">
         {{ article.comments_count }} THOUGHTS ON “{{- article.title -}}”
       </h2>
 
-      <div class="flex flex-col space-y-8 mt-6">
-        {%- for comment in article.comments limit: 5 -%}
-          <div class="flex space-x-4">
-            <div class="flex-none w-20 h-20 bg-gray-200">
-              <img src="//www.gravatar.com/avatar/{{ comment.email | md5 }}?s=80&d=mm&r=g" alt="{{ comment.author }}" class="w-full h-full object-cover">
+      {%- paginate article.comments by 6 -%}
+        <div class="flex flex-col space-y-8 mt-8">
+          {%- for comment in article.comments limit: 5 -%}
+            <div class="flex space-x-4">
+              <div class="flex-none w-20 h-20 bg-gray-200">
+                <img src="//www.gravatar.com/avatar/{{ comment.email | md5 }}?s=80&d=mm&r=g" alt="{{ comment.author }}" class="w-full h-full object-cover">
+              </div>
+              <div class="flex-grow pt-1 text-sm">
+                <h5 class="uppercase font-semibold tracking-wide">{{ comment.author}}</h5>
+                <div class=" text-gray-500 py-1.5">{{ comment.content }}</div>
+                <p class="italic text-gray-500">{{ comment.created_at | date: "%b %d, %Y at %H:%M" }}</p>
+              </div>
             </div>
-            <div class="flex-grow pt-1 text-sm">
-              <h5 class="uppercase font-semibold tracking-wide">{{ comment.author}}</h5>
-              <div class=" text-gray-500 py-1.5">{{ comment.content }}</div>
-              <p class="italic text-gray-500">{{ comment.created_at | date: "%b %d, %Y at %H:%M" }}</p>
-            </div>
-          </div>
-        {%- endfor -%}
-      </div>
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          {%- render 'pagination', paginate: paginate -%}
+        {%- endif -%}
+      {%- endpaginate -%}
     </div>
   {%- endif -%}
 
 
   {%- if section.settings.post_comment -%}
-    <div class="mt-16 border-t  border-gray-300">
+    <div class="mt-20 py-8 border-t  border-gray-200 text-gray-500 text-sm">
+      {% form 'new_comment', article %}
+        {%- liquid
+          assign post_message = 'blogs.article.success'
+          if blog.moderated? and comment.status == 'unapproved'
+            assign post_message = 'blogs.article.success_moderated'
+          endif
+        -%}
+        <h2 class="py-2 uppercase font-semibold text-gray-800">{{ 'blogs.article.comment_form_title' | t }}</h2>
+        <p class="text-sm">{{ 'blogs.article.comment_note' | t }}</p>
+
+        {%- if form.posted_successfully? -%}
+          <h3 class="py-6">{{ post_message | t }}</h3>
+        {%- endif -%}
+
+        <div class="flex flex-wrap mt-4 -mx-1.5">
+          <div class="w-full md:w-1/2 mb-6 px-1.5">
+            <label for="CommentForm-author" class="text-sm py-2">{{ 'blogs.article.name' | t }}*</label> <br>
+            <input
+              type="text"
+              name="comment[author]"
+              class="focus:outline-none px-4 py-2 border border-gray-200 focus:border-gray-700 w-full"
+              id="CommentForm-author"
+              value="{{ form.author }}"
+            >
+            {%- if form.errors contains 'author' -%}
+              <p class="text-sm py-2">
+                <i class='bx bxs-error-circle text-red-500'></i>
+                {{ 'blogs.article.name' | t }} {{ form.errors.messages['author'] }}.
+              </p>
+            {%- endif -%}
+          </div>
+
+          <div class="w-full md:w-1/2 mb-6 px-1.5">
+            <label for="CommentForm-email" class="text-sm py-2">{{ 'blogs.article.email' | t }}*</label> <br>
+            <input
+              type="email"
+              name="comment[email]"
+              class="focus:outline-none px-4 py-2 border border-gray-200 focus:border-gray-700 w-full"
+              id="CommentForm-email"
+              autocorrect="off"
+              autocapitalize="off"
+              value="{{ form.email }}"
+            >
+            {%- if form.errors contains 'email' -%}
+              <p class="text-sm py-2">
+                <i class='bx bxs-error-circle text-red-500'></i>
+                {{ 'blogs.article.email' | t }} {{ form.errors.messages['email'] }}.
+              </p>
+            {%- endif -%}
+          </div>
+          
+          <div class="w-full mb-6 px-1.5">
+            <label for="CommentForm-body" class="text-sm py-2">{{ 'blogs.article.message' | t }}*</label> <br>
+            <textarea
+              rows="8"
+              type="text"
+              name="comment[body]"
+              class="focus:outline-none px-4 py-2 border border-gray-200 focus:border-gray-700 w-full"
+              id="CommentForm-body"
+            >{{ form.body }}</textarea>
+            {%- if form.errors contains 'body' -%}
+              <p class="text-sm py-2">
+                <i class='bx bxs-error-circle text-red-500'></i>
+                {{ 'blogs.article.message' | t }} {{ form.errors.messages['body'] }}.
+              </p>
+            {%- endif -%}
+          </div>
+
+          <div class="w-full mb-6 px-1.5">
+            <input type="submit" class="border-2 border-gray-800 rounded-full bg-white font-semibold px-6 py-2 hover:text-white hover:border-sky-500 hover:bg-sky-500 cursor-pointer" value="{{ 'blogs.article.post' | t }}">
+          </div>
+        </div>
+      {% endform %}
     </div>
   {%- endif -%}
 </div>

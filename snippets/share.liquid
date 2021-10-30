@@ -9,7 +9,7 @@
     {% render 'share', bg_color: false %}
 {% endcomment %}
 
-<div class="flex flex-wrap justify-center space-x-4 {% if bg_color %} text-xl {% else %} text-2xl {% endif %}">
+<div class="flex flex-wrap justify-center space-x-4 overflow-hidden {% if bg_color %} text-xl {% else %} text-2xl {% endif %}">
   {%- if settings.social_facebook_link != blank -%}
     <a href="#" class="group relative">
       <span class="flex justify-center items-center w-8 h-8 group-hover:-translate-y-1 transition-all-0.3 rounded-full {% if bg_color %} bg-gray-800 text-white {% endif %} group-hover:text-blue-600">

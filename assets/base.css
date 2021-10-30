@@ -68,14 +68,14 @@ html {
 }
 
 .shopify-section-header-sticky {
-  position: sticky;
+  position: sticky !important;
   top: 0;
   z-index: 10;
   border-bottom: 1px solid #ccc;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.shopify-section-header-sticky .hiden-when-scroll {
+.shopify-section-header-sticky .hidden-when-scroll {
   display: none;
 }
 
@@ -96,6 +96,7 @@ html {
 .shopify-section-header-hidden {
   transform: translateY(-100%);
   box-shadow: none;
+  pointer-events: none;
 }
 
 .shadow-dropmenu {

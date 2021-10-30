@@ -83,6 +83,7 @@
       },
       "moderated": "Please note, comments need to be approved before they are published.",
       "comment_form_title": "Leave a comment",
+      "comment_note": "Your email address will not be published. Required fields are marked *",
       "name": "Name",
       "email": "Email",
       "message": "Comment",
