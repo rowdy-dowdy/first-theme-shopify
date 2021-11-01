@@ -195,10 +195,11 @@
     },
     "contact": {
       "form": {
-        "name": "Name",
-        "email": "Email",
-        "phone": "Phone number",
-        "comment": "Comment",
+        "name": "Your Name",
+        "email": "Your Email",
+        "phone": "Your Phone number",
+        "comment": "Your Comment",
+        "message": "Your message",
         "send": "Send",
         "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
         "error_heading": "Please adjust the following:"
@@ -227,6 +228,9 @@
       "note": "Order special instructions",
       "checkout": "Check out",
       "empty": "Your cart is empty",
+      "shop_link": "RETURN TO SHOP",
+      "cart_page_html": "Before proceed to checkout you must add some products to your shopping cart.</br> You will find a lot of interesting products on our \"Shop\" page.",
+      "cart_threshold_html": "Free Shipping for all orders over {{ price }}",
       "cart_error": "There was an error while updating your cart. Please try again.",
       "cart_quantity_error_html": "You can only add [quantity] of this item to your cart.",
       "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout",

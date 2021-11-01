@@ -72,7 +72,7 @@ html {
   top: 0;
   z-index: 10;
   border-bottom: 1px solid #ccc;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
 }
 
 .shopify-section-header-sticky .hidden-when-scroll {
@@ -142,5 +142,17 @@ html {
   width: 60px;
   height: 2px;
   background: #222;
+}
+
+.content h3 {
+  font-size: 23px;
+  font-weight: 600;
+  margin: 0.65em 0 0.5em;
+}
+
+.content p {
+  margin-bottom: 1.3em;
+  color:  rgba(113, 113, 122,1);
+  font-size: 14px;
 }
 

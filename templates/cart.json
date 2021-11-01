@@ -1,34 +1,18 @@
 {
   "sections": {
-    "cart-items": {
-      "type": "main-cart-items"
-    },
-    "cart-footer": {
-      "type": "main-cart-footer",
-      "blocks": {
-        "subtotal": {
-          "type": "subtotal"
-        },
-        "buttons": {
-          "type": "buttons"
-        }
-      },
-      "block_order": [
-        "subtotal",
-        "buttons"
-      ]
+    "cart": {
+      "type": "main-cart"
     },
     "featured-products": {
       "type": "featured-collection",
       "settings": {
         "collection": "all",
-        "image_ratio": "square"
+        "products_to_show": 4
       }
     }
   },
   "order": [
-    "cart-items",
-    "cart-footer",
+    "cart",
     "featured-products"
   ]
 }

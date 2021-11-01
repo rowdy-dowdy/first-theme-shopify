@@ -1,22 +1,33 @@
-<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<div class="w-full h-32 bg-gray-200 relative">
+  <img
+    src="{{ section.settings.parallax_img | img_url: '1500x' }}"
+    alt="{{ section.settings.parallax_img | escape }}"
+    class="absolute w-full h-full top-0 left-0 object-cover"
+    width="{{ section.settings.parallax_img }}"
+    height="{{ section.settings.parallax_img }}"
+    loading="lazy"
+  >
+  <div class="absolute w-full h-full top-0 left-0 bg-black/60 text-white flex flex-col space-y-3 justify-center items-center px-4 text-sm text-center">
+    <h1 class="uppercase text-lg tracking-wider font-semibold">{{ page.title }}</h1>
+  </div>
+</div>
 
-<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
-
-<div class="page-width page-width--narrow">
-  <h1 class="main-page-title page-title h0">
-    {{ page.title | escape }}
-  </h1>
-  <div class="rte">
+<div class="w-full max-w-[1200px] mx-auto mt-12 px-4">
+  <div class="content">
     {{ page.content }}
   </div>
 </div>
 
 {% schema %}
-{
-  "name": "t:sections.main-page.name",
-  "tag": "section",
-  "class": "spaced-section"
-}
+  {
+    "name": "Page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "parallax_img",
+        "label": "Chose image in parallax"
+      }
+    ]
+  }
 {% endschema %}
+

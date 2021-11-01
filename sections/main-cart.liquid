@@ -1,0 +1,48 @@
+<div class="w-full h-32 bg-gray-200 relative">
+  <img
+    src="{{ section.settings.parallax_img | img_url: '1500x' }}"
+    alt="{{ section.settings.parallax_img | escape }}"
+    class="absolute w-full h-full top-0 left-0 object-cover"
+    width="{{ section.settings.parallax_img }}"
+    height="{{ section.settings.parallax_img }}"
+    loading="lazy"
+  >
+  <div class="absolute w-full h-full top-0 left-0 bg-black/60 text-white flex flex-col space-y-3 justify-center items-center px-4 text-sm text-center">
+    <h1 class="uppercase text-lg tracking-wider font-semibold">{{ page.title }}</h1>
+  </div>
+</div>
+
+<div class="w-full max-w[1200px] mx-auto px-4 text-center my-16">
+  <p class="text-[calc(3rem+10vmin)] text-gray-500"><i class='bx bx-shopping-bag'></i></p>
+  <h4 class="text-3xl uppercase font-semibold">{{ 'sections.cart.empty' | t }}</h4>
+  <p class="text-sm text-gray-500 py-6">{{ 'sections.cart.cart_page_html' | t }}</p>
+  <p class="mb-6">
+    <a href="/collections/all" class="inline-block rounded-full px-6 py-2 bg-sky-500 text-white font-semibold">{{ 'sections.cart.shop_link' | t }}</a>
+  </p>
+  <p class="text-sm text-gray-500">
+    {{ 'sections.cart.cart_threshold_html' | t: price: "<span class='text-red-500'>$100</span>" }}
+  </p>
+</div>
+
+<cart-item>
+  {%- if cart == empty -%}
+    empty
+  {%- else -%}
+    {%- for item in cart.items -%}
+      {{ item.title }}
+    {%- endfor -%}
+  {%- endif -%}
+</cart-item>
+
+{% schema %}
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "parallax_img",
+        "label": "Chose parallax images"
+      }
+    ]
+  }
+{% endschema %}
