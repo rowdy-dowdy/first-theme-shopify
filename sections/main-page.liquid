@@ -14,7 +14,7 @@
 
 <div class="w-full max-w-[1200px] mx-auto mt-12 px-4">
   <div class="content">
-    {{ page.content }}
+    {% include 'shortcode' load: page.content %}
   </div>
 </div>
 

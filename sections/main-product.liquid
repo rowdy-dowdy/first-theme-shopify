@@ -113,7 +113,8 @@
                           {%- if image.width >= 940 -%}{{ image | img_url: '940x' }} 940w,{%- endif -%}
                           {%- if image.width >= 1066 -%}{{ image | img_url: '1066x' }} 1066w,{%- endif -%}
                           {{ image | img_url: 'master' }} {{ image.width }}w"
-                        src="{{ image | img_url: '1500x' }}"
+                        src="{{ image | img_url: '500x' }}"
+                        data-drift="{{ image | img_url: '1500x' }}"
                         alt="{{ image.alt | escape }}"
                         class="drift-img absolute w-full h-full top-0 left-0 object-cover"
                         width="{{ image.width }}"
@@ -413,7 +414,7 @@
     drift[index] = new Drift(img, {
       paneContainer: pane,
       inlinePane: false,
-      sourceAttribute: 'src',
+      sourceAttribute: 'data-drift',
       hoverBoundingBox: true,
     });
   });

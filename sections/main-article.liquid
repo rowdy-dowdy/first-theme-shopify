@@ -36,7 +36,7 @@
   </div>
 </div>
 
-<div class="w-full max-w-[1200px] mx-auto px-4 mt-12">
+<div class="w-full max-w-[1200px] mx-auto px-4 mt-12 overflow-hidden">
   <div class="content">{{ article.content }}</div>
 
   <div class="mt-12 w-full flex flex-col sm:flex-row items-center md:justify-between px-4 py-3 border border-gray-200 text-gray-600">
@@ -62,7 +62,7 @@
     </div>
   {%- endif -%}
 
-  <div class="flex overflow-hidden mt-16 justify-center items-center text-4xl">
+  <div class="flex max-w-full mt-16 justify-center items-center text-4xl">
     {% if blog.previous_article == nil %} 
       {%- assign article_prev = blog.articles.first -%}
     {% else %}

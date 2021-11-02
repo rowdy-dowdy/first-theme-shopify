@@ -27,6 +27,7 @@
   }
 </style>
 
+
 <div class="flex flex-col">
   <div class="relative w-full pb-[127%] group overflow-hidden">
     <a href="{{ product_card_product.url | within: collection }}">
@@ -109,7 +110,9 @@
     </a>
   </div>
 
-  <div class="font-semibold line-clamp-2 mt-4">{{ product_card_product.title }}</div>
+  <h4 class="font-semibold line-clamp-2 mt-4 hover:text-sky-500">
+    <a href="{{ product_card_product.url | within: collection }}">{{ product_card_product.title }}</a>
+  </h4>
   <div class="text-gray-600 text-sm font-medium">
     {%- if product_card_product.price_varies -%}
       <span class="line-through">${{ product_card_product.price_max }}</span> - 
