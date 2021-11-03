@@ -6,7 +6,7 @@ module.exports = {
     enabled: true,
     content: [
       './layout/*.liquid',
-      './templates/*.liquid',
+      './templates/**/*.liquid',
       './sections/*.liquid',
       './snippets/*.liquid'
     ]

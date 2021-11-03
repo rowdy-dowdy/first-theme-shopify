@@ -1,148 +1,219 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
+<style>
+  #recover:target {
+    display: flex;
+  }
+  #recover:target ~ #login {
+    display: none;
+  }
+</style>
 
-<div class="customer login">
-  <h1 id="recover" tabindex="-1">
-    {{ 'customer.recover_password.title' | t }}
-  </h1>
-  <div>
-    <p>
-      {{ 'customer.recover_password.subtext' | t }}
-    </p>
+<div class="w-full h-32 bg-gray-500 relative text-white flex justify-center items-center px-4 text-sm text-center">
+  <h1 class="uppercase text-lg tracking-wider font-semibold">My account</h1>
+</div>
 
-    {%- form 'recover_customer_password' -%}
-      {% assign recover_success = form.posted_successfully? %}
-      <div class="field">
-        <input type="email"
-          value=""
-          name="email"
-          id="RecoverEmail"
-          autocorrect="off"
-          autocapitalize="off"
-          autocomplete="email"
-          {% if form.errors %}
-            aria-invalid="true"
-            aria-describedby="RecoverEmail-email-error"
-            autofocus
-          {% endif %}
-          placeholder="{{ 'customer.login_page.email' | t }}"
-        >
-        <label for="RecoverEmail">
-          {{ 'customer.login_page.email' | t }}
-        </label>
-      </div>
-      {%- if form.errors -%}
-        <small id="RecoverEmail-email-error" class="form__message">
-          <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 13 13">
-            <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
-            <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
-            <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
-            <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
-          </svg>
-          {{ form.errors.messages['form'] }}
-        </small>
-      {%- endif -%}
-
-      <button>
-        {{ 'customer.login_page.submit' | t }}
-      </button>
-
-      <a href="#login">
-        {{ 'customer.login_page.cancel' | t }}
-      </a>
-    {%- endform -%}
-  </div>
-
-  <h1 id="login" tabindex="-1">
-    {{ 'customer.login_page.title' | t }}
-  </h1>
-  <div>
-    {%- if recover_success == true -%}
-      <h3 class="form__message" tabindex="-1" autofocus>
-        <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 13 13">
-          <path d="M6.5 12.35C9.73087 12.35 12.35 9.73086 12.35 6.5C12.35 3.26913 9.73087 0.65 6.5 0.65C3.26913 0.65 0.65 3.26913 0.65 6.5C0.65 9.73086 3.26913 12.35 6.5 12.35Z" fill="#428445" stroke="white" stroke-width="0.7"/>
-          <path d="M5.53271 8.66357L9.25213 4.68197" stroke="white"/>
-          <path d="M4.10645 6.7688L6.13766 8.62553" stroke="white">
-        </svg>
-        {{ 'customer.recover_password.success' | t }}
-      </h3>
-    {%- endif -%}
-    {%- form 'customer_login', novalidate: 'novalidate' -%}
-      {%- if form.errors -%}
-        <h2 class="form__message" tabindex="-1" autofocus>
-          <span class="visually-hidden">{{ 'accessibility.error' | t }} </span>
-          <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 13 13">
-            <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
-            <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
-            <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
-            <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
-          </svg>
-          {{ 'templates.contact.form.error_heading' | t }}
-        </h2>
-        {{ form.errors | default_errors }}
-      {%- endif -%}
-
-      <div class="field">        
-        <input
-          type="email"
-          name="customer[email]"
-          id="CustomerEmail"
-          autocomplete="email"
-          autocorrect="off"
-          autocapitalize="off"
-          {% if form.errors contains 'form' %}
-            aria-invalid="true"
-          {% endif %}
-          placeholder="{{ 'customer.login_page.email' | t }}"
-        >
-        <label for="CustomerEmail">
-          {{ 'customer.login_page.email' | t }}
-        </label>
-      </div>
-
-      {%- if form.password_needed -%}
-        <div class="field">          
-          <input
-            type="password"
-            value=""
-            name="customer[password]"
-            id="CustomerPassword"
-            autocomplete="current-password"
-            {% if form.errors contains 'form' %}
-              aria-invalid="true"
-            {% endif %}
-            placeholder="{{ 'customer.login_page.password' | t }}"
-          >
-          <label for="CustomerPassword">
-            {{ 'customer.login_page.password' | t }}
-          </label>
+<div class="w-full max-w-[1200px] mx-auto px-4 mt-12">
+  <div class="flex flex-wrap lg:flex-nowrap lg:space-x-6 justify-center">
+    <div class="w-full lg:w-1/2 mb-6">
+      {%- form 'recover_customer_password', id: "recover", class: "hidden" -%}
+        <div class="flex flex-wrap">
+          <h1 class="w-full uppercase font-semibold">
+            {{ 'customer.login_page.reset_password_title' | t }}
+          </h1>
+          <p class="w-full pb-3 pt-4 text-sm text-gray-600">{{ 'customer.login_page.reset_password_subtitle' | t }}</p>
+          <div class="w-full text-gray-500 text-sm mb-2">
+            <label for="RecoverEmail" class="py-3 block">
+              {{ 'customer.login_page.email' | t }} <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="email"
+              value=""
+              name="email"
+              class="focus:outline-none border border-gray-300 focus:border-gray-800 px-4 py-2 w-full"
+              id="RecoverEmail"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+            >
+          </div>
+          {%- if form.errors -%}
+            <h2 class="py-2 text-gray-600 text-sm" >{{ 'templates.contact.form.error_heading' | t }}</h2>
+            <div class="w-full px-4 text-gray-600 text-sm">
+              {%- for field in form.errors -%}
+                <p>* {{ form.errors.messages[field] }}</p>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          <div class="w-full py-2">
+            <button type="submit" class="border-2 border-gray-800 px-6 py-2 text-sm font-semibold hover:border-sky-500 hover:bg-sky-500 hover:text-white rounded-full">
+              {{ 'customer.login_page.reset_password' | t }}
+            </button>
+          </div>
+          <div class="w-full py-2">
+            <a href="#login" id="hideRecoverPasswordLink" class="inline-block border-2 border-gray-800 px-6 py-2 text-sm font-semibold hover:border-sky-500 hover:bg-sky-500 hover:text-white rounded-full">
+              {{ 'customer.login_page.cancel' | t }}
+            </a>
+          </div>
         </div>
+      {%- endform -%}
 
-        <a href="#recover">
-          {{ 'customer.login_page.forgot_password' | t }}
-        </a>
-      {%- endif -%}
+      {%- form 'customer_login', novalidate: 'novalidate', id: "login" -%}
+        <div class="flex flex-wrap">
+          <h1 class="w-full uppercase font-semibold">
+            {{ 'customer.login_page.title' | t }}
+          </h1>
+          {%- if form.errors -%}
+            <h2 class="py-2 text-gray-600 text-sm" >{{ 'templates.contact.form.error_heading' | t }}</h2>
+            <div class="w-full px-4 text-gray-600 text-sm">
+              {%- for field in form.errors -%}
+                <p>* {{ form.errors.messages[field] }}</p>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          <div class="w-full text-gray-500 text-sm mb-2">
+            <label for="CustomerEmail" class="py-3 block">
+              {{ 'customer.login_page.email' | t }} <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="email"
+              class="focus:outline-none border border-gray-300 focus:border-gray-800 px-4 py-2 w-full"
+              name="customer[email]"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off"
+            >
+          </div>
+          {%- if form.password_needed -%}
+            <div class="w-full text-gray-500 text-sm mb-2">
+              <label for="CustomerPassword" class="py-3 block">
+                {{ 'customer.login_page.password' | t }} <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="password"
+                class="focus:outline-none border border-gray-300 focus:border-gray-800 px-4 py-2 w-full"
+                value=""
+                name="customer[password]"
+                id="CustomerPassword"
+                autocomplete="current-password"
+              >
+            </div>
+            <a href="#recover" id="recoverPasswordLink" class="block py-4 text-sm hover:text-sky-600">
+              {{ 'customer.login_page.forgot_password' | t }}
+            </a>
+          {%- endif -%}
+          <br>
+          <div class="w-full">
+            <button type="submit" class="border-2 border-gray-800 px-6 py-2 text-sm font-semibold hover:border-sky-500 hover:bg-sky-500 hover:text-white rounded-full">
+              {{ 'customer.login_page.sign_in' | t }}
+            </button>
+          </div>
+        </div>
+      {%- endform -%}
 
-      <button>
-        {{ 'customer.login_page.sign_in' | t }}
-      </button>
+    </div>
 
-      <a href="{{ routes.account_register_url }}">
-        {{ 'customer.login_page.create_account' | t }}
-      </a>
-      
-    {%- endform -%}
-  </div>
-  
-  {%- if shop.checkout.guest_login -%}
-    <div>
-      <hr>
-      <h2>{{ 'customer.login_page.guest_title' | t }}</h2>
-
-      {%- form 'guest_login' -%}
-        <button>
-          {{ 'customer.login_page.guest_continue' | t }}
-        </button>
+    <div class="w-full lg:w-1/2 mb-6">
+      {%- form 'create_customer', novalidate: 'novalidate' -%}
+        <div class="flex flex-wrap">
+          <h1 class="w-full uppercase font-semibold">
+            {{ 'customer.register.title' | t }}
+          </h1>
+          <div class="w-full text-gray-500 text-sm mb-2">
+            <label for="RegisterForm-FirstName" class="py-3 block">
+              {{ 'customer.register.first_name' | t }}
+            </label>
+            <input
+              type="text"
+              class="focus:outline-none border border-gray-300 focus:border-gray-800 px-4 py-2 w-full"
+              name="customer[first_name]"
+              id="RegisterForm-FirstName"
+              autocomplete="given-name"
+            >
+          </div>
+          <div class="w-full text-gray-500 text-sm mb-2">
+            <label for="RegisterForm-LastName" class="py-3 block">
+              {{ 'customer.register.last_name' | t }}
+            </label>
+            <input
+              type="text"
+              name="customer[last_name]"
+              class="focus:outline-none border border-gray-300 focus:border-gray-800 px-4 py-2 w-full"
+              id="RegisterForm-LastName"
+              autocomplete="family-name"
+            >
+          </div>
+          <div class="w-full text-gray-500 text-sm mb-2">
+            <label for="RegisterForm-email" class="py-3 block">
+              {{ 'customer.register.email' | t }}
+            </label>
+            <input
+              type="email"
+              name="customer[email]"
+              id="RegisterForm-email"
+              class="focus:outline-none border border-gray-300 focus:border-gray-800 px-4 py-2 w-full"
+              spellcheck="false"
+              autocapitalize="off"
+              autocomplete="email"
+              aria-required="true"
+            >
+          </div>
+          <div class="w-full text-gray-500 text-sm mb-2">
+            <label for="RegisterForm-password" class="py-3 block">
+              {{ 'customer.register.password' | t }}
+            </label>
+            <input
+              type="password"
+              name="customer[password]"
+              class="focus:outline-none border border-gray-300 focus:border-gray-800 px-4 py-2 w-full"
+              id="RegisterForm-password"
+              aria-required="true"
+            >
+          </div>
+          <button type="submit" class="mt-3 border-2 border-gray-800 px-6 py-2 text-sm font-semibold hover:border-sky-500 hover:bg-sky-500 hover:text-white rounded-full">
+            {{ 'customer.register.submit' | t }}
+          </button>
+        </div>
       {%- endform -%}
     </div>
-  {%- endif -%}
+  </div>
 </div>
+
+{%- if shop.checkout.guest_login -%}
+  <div>
+    <hr>
+    <h2>{{ 'customer.login_page.guest_title' | t }}</h2>
+
+    {%- form 'guest_login' -%}
+      <button>
+        {{ 'customer.login_page.guest_continue' | t }}
+      </button>
+    {%- endform -%}
+  </div>
+{%- endif -%}
+
+<script>
+  let login = document.querySelector('#login')
+  let recover = document.querySelector('#recover')
+
+  let hideRecoverPasswordLink = document.querySelector('#hideRecoverPasswordLink')
+  let recoverPasswordLink = document.querySelector('#recoverPasswordLink')
+
+  console.log(login,recover)
+  hideRecoverPasswordLink.addEventListener('click', function(e) {
+    e.preventDefault()
+
+    login.classList.remove('!hidden')
+    login.classList.add('!flex')
+    recover.classList.add('!hidden')
+    recover.classList.remove('!flex')
+  })
+
+  recoverPasswordLink.addEventListener('click', function(e) {
+    e.preventDefault()
+
+    login.classList.remove('!flex')
+    login.classList.add('!hidden')
+    recover.classList.add('!flex')
+    recover.classList.remove('!hidden')
+  })
+
+</script>

@@ -141,10 +141,10 @@
         <div class="flex justify-between items-center mt-3">
           <p class="text-gray-500 text-2xl font-base">
             {%- if product.price_varies -%}
-              <span class="line-through">${{ product.price_max }}</span> -
-              <span class="text-red-500">${{ product.price_min }}</span>
+              <span class="line-through">{{ product.price_max | money }}</span> -
+              <span class="text-red-500">{{ product.price_min | money }}</span>
             {%- else -%}
-              <span>${{ product.price_min }}</span>
+              <span>{{ product.price_min | money }}</span>
             {%- endif -%}
           </p>
 

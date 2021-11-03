@@ -323,14 +323,17 @@
     "login_page": {
       "cancel": "Cancel",
       "create_account": "Create account",
-      "email": "Email",
+      "email": "Email address",
       "forgot_password": "Forgot your password?",
       "guest_continue": "Continue",
       "guest_title": "Continue as a guest",
       "password": "Password",
       "title": "Login",
       "sign_in": "Sign in",
-      "submit": "Submit"
+      "submit": "Submit",
+      "reset_password": "Reset password",
+      "reset_password_title": "Reset your password",
+      "reset_password_subtitle": "Lost your password? Please enter your email address. You will receive a link to create a new password via email."
     },
     "order": {
       "title": "Order {{ name }}",
@@ -377,7 +380,8 @@
       "last_name": "Last name",
       "email": "Email",
       "password": "Password",
-      "submit": "Create"
+      "submit": "Register",
+      "already": "Already have an account? Login here"
     },
     "reset_password": {
       "title": "Reset account password",
